@@ -5,35 +5,38 @@ puts "1(新規でメモを作成) 2(既存のメモ編集する)"
 memo_number = gets.to_i
 
 if memo_number == 1
+
   puts "拡張子を除いたファイル名を入力してください"
 
- file_name = gets.to_s
+  file_name = gets.chomp
 
- puts "メモしたい内容を記入してください"
- p "完了したら Ctrl+D　を入力します"
+  puts "メモしたい内容を記入してください"
+  p "完了したら Ctrl+D　を入力します"
 
-memo_type = gets.chomp
+  memo_type = gets.chomp
 
-CSV.open("#{file_name}.csv", 'w') do |csv|
+  CSV.open("#{file_name}.csv", 'w') do |csv|
   csv << ["#{memo_type}"]
 
 end
 
 
 elsif memo_number == 2
- puts "既存のcsvファイル名(exist.csv)に追記します"
 
+  puts "拡張子を除いた既存のcsvファイル名を入力してください"
 
-puts "追記したい内容を入力してください"
-p "完了したら Ctrl+D　を入力します"
+  file_name = gets.chomp
 
-memo_type = gets.chomp
+  puts "追記したい内容を入力してください"
+  p "完了したら Ctrl+D　を入力します"
 
- CSV.open("exsit.csv", 'a') do |csv|
+  memo_type = gets.chomp
+
+  CSV.open("#{file_name}.csv", 'a') do |csv|
 
   csv << ["#{memo_type}"]
 
- end
+end
 
 else
   puts "エラー。1か2を選択してください"
