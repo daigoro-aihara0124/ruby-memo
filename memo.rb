@@ -12,7 +12,7 @@ if memo_number == 1
  puts "メモしたい内容を記入してください"
  p "完了したら Ctrl+D　を入力します"
 
-memo_type = readlines
+memo_type = gets.chomp
 
 CSV.open("#{file_name}.csv", 'w') do |csv|
   csv << ["#{memo_type}"]
@@ -27,7 +27,7 @@ elsif memo_number == 2
 puts "追記したい内容を入力してください"
 p "完了したら Ctrl+D　を入力します"
 
-memo_type = readlines
+memo_type = gets.chomp
 
  CSV.open("exsit.csv", 'a') do |csv|
 
